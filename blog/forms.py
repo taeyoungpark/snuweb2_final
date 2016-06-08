@@ -9,7 +9,7 @@ class CategoryForm(forms.ModelForm):
 class ShopForm(forms.ModelForm):
     class Meta:
         model = Shop
-        fields = '__all__'
+        fields = ['name','phone','address','description','photo1','photo2','photo3','category']
 
 
 class ReviewForm(forms.ModelForm):
