@@ -29,7 +29,7 @@
     <li>
         {{ review.comment }}
         by {{ review.user }}
-        {{ review.created_at }}
+        {{ review.updated_at }}
         <a href="{% url "blog:review_edit" shop.pk review.pk %}">
             수정
         </a>
