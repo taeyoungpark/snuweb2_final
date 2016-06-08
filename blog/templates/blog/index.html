@@ -1,1 +1,32 @@
-index
+
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <div class="row">
+        {% for category in category_list %}
+          <h3> {{ category.name }} </h3> <hr />
+          {% for shop in category.shop_set.all %}
+
+          <div class="col-sm-4">
+              <img src="{{ shop.photo.url }}" style="max-width: 100%;" />
+              <div class="caption">
+                  <a href="{% url "blog:shop_detail" shop.pk %}">
+                      {{ shop.name }}
+                  </a>
+              </div>
+          </div>
+          {% endfor %}
+        {% endfor %}
+    </div>
+  <div class="row">
+    {% for reviews in recent_reviews %}
+    {{ reviews.comment }}
+   <img src="{{ reviews.photo.url }}" />
+    <hr />
+    {% endfor %}
+
+
+
+  </div>
+
+{% endblock %}
