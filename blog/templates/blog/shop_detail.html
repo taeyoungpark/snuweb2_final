@@ -8,17 +8,21 @@
     <hr/>
 
     <img src="{{ shop.photo1.url }}" />
+    {% if shop.photo2 %}
     <img src="{{ shop.photo2.url }}" />
+    {% endif %}
+    {% if shop.photo3 %}
     <img src="{{ shop.photo3.url }}" />
+    {% endif %}
 
     {{ shop.description|linebreaks }}
 
     <h3>리뷰</h3>
-    <a href="{% url "blog:comment_new" post.pk %}" class="btn btn-primary btn-block">댓글 쓰기</a>
+    <a href="{% url "blog:review_new" shop.pk %}" class="btn btn-primary btn-block">댓글 쓰기</a>
     <ul>
     {% for review in shop.review_set.all %}
     <li>
-        {{ revew.comment }}
+        {{ review.comment }}
         by {{ review.user }}
         {{ review.created_at }}
         <a href="{% url "blog:review_edit" shop.pk review.pk %}">
