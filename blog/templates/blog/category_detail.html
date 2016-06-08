@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% for shop in category %}
+{% for shop in category.shop_set.all %}
 
 <div class="col-sm-4">
     <img src="{{ shop.photo1.url }}" style="max-width: 100%;" />

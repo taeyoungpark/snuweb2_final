@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Category, Shop, Review
 from .forms import CategoryForm, ShopForm, ReviewForm
 from datetime import date
-
+from django.core.urlresolvers import reverse
 
 
 def index(request):
@@ -19,7 +19,7 @@ def category_new(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
+            category = form.save()
             url = reverse('blog:category_detail', args=[category.pk])
             messages.success(request, '새로운 포스팅을 등록했습니다.')
 
