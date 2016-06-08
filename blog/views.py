@@ -9,8 +9,8 @@ from django.core.urlresolvers import reverse
 
 def index(request):
     category_list = Category.objects.all()
-    recent_reviews = Review.objects.filter(updated_at=date.today()).all()
-    #최근 = 오늘 작성된
+    recent_reviews = Review.objects.filter().order_by('-id')[:10][::-1]
+    #최근10개
     return render(request, 'blog/index.html', {
         'category_list': category_list, 'recent_reviews': recent_reviews,
     })
