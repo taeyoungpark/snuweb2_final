@@ -22,6 +22,7 @@
         {% endfor %}
     </div>
   <div class="row">
+    <h1> 최근 다섯개 댓글 </h1>
     {% for reviews in recent_reviews %}
     {{ reviews.comment }}
    <img src="{{ reviews.photo.url }}" />

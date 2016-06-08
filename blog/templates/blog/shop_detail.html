@@ -17,6 +17,11 @@
 
     {{ shop.description|linebreaks }}
 
+    <a href="{% url "blog:shop_edit" shop.pk %}">
+        샵수정
+    </a>
+
+
     <h3>리뷰</h3>
     <a href="{% url "blog:review_new" shop.pk %}" class="btn btn-primary btn-block">댓글 쓰기</a>
     <ul>

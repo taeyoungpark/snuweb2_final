@@ -15,5 +15,11 @@
 </div>
 {% endfor %}
 
+<a href="{% url "blog:index" %}">
+    목록으로
+</a>
+<a href="{% url "blog:category_edit" category.pk %}">
+    수정
+</a>
 
 {% endblock %}
