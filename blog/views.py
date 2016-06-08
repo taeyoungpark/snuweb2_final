@@ -87,3 +87,40 @@ def shop_detail(request, pk):
     return render(request, 'blog/shop_detail.html', {
         'shop': shop,
     })
+
+@login_required
+def review_new(request, shop_pk):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.shop = get_object_or_404(Shop, pk=shop_pk)
+            review.user = request.user
+            review.save()
+            messages.success(request, '새로운 리뷰가 등록되었습니다.')
+            return redirect('blog:shop_detail', shop_pk)
+    else:
+        form = ReviewForm()
+    return render(request, 'blog/review_form.html', {
+        'form': form,
+    })
+
+
+@login_required
+def review_edit(request, shop_pk, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.post = get_object_or_404(Post, pk=post_pk)
+            review.user = request.user
+            review.save()
+            messages.success(request, '댓글이 수정되었습니다.')
+            return redirect('blog:shop_detail', shop_pk)
+    else:
+        form = ReviewForm(instance=review)
+    return render(request, 'blog/review_form.html', {
+        'form': form,
+    })
