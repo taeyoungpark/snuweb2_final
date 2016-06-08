@@ -4,11 +4,14 @@
 {% block content %}
     <div class="row">
         {% for category in category_list %}
-          <h3> {{ category.name }} </h3> <hr />
+
+
+
+          <h1> {{ category.name }} </h1> <hr />
           {% for shop in category.shop_set.all %}
 
           <div class="col-sm-4">
-              <img src="{{ shop.photo.url }}" style="max-width: 100%;" />
+              <img src="{{ shop.photo1.url }}" style="max-width: 100%;" />
               <div class="caption">
                   <a href="{% url "blog:shop_detail" shop.pk %}">
                       {{ shop.name }}

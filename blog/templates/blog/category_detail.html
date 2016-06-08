@@ -1,0 +1,19 @@
+
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+{% for shop in category %}
+
+<div class="col-sm-4">
+    <img src="{{ shop.photo1.url }}" style="max-width: 100%;" />
+    <div class="caption">
+        <a href="{% url "blog:shop_detail" shop.pk %}">
+            {{ shop.name }}
+        </a>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
