@@ -21,7 +21,7 @@ def category_new(request):
         if form.is_valid():
             category = form.save()
             url = reverse('blog:category_detail', args=[category.pk])
-            messages.success(request, '새로운 포스팅을 등록했습니다.')
+            messages.success(request, '카테고리를 등록했습니다.')
 
             return redirect(url)
     else:
