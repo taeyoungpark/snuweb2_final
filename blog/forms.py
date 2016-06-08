@@ -10,7 +10,7 @@ class ShopForm(forms.ModelForm):
     class Meta:
         model = Shop
         fields = '__all__'
-        exclude = ['created_at', 'updated_at', 'category']
+
 
 class ReviewForm(forms.ModelForm):
     class Meta:
